@@ -1,19 +1,16 @@
 import React from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
 import Aux from '../Aux/Aux'
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 
 const layout = (props) => (
   <Aux>
-    <div className="gray-bg">
-      <Grid>
-        <Row>
-          <Col lg={9}>
-            <div className="wrapper wrapper-content">
-              {props.children}
-            </div>
-          </Col>
-        </Row>
-      </Grid>
+    <div id="page-wrapper" className="gray-bg">
+      <Toolbar />
+      <div className="wrapper wrapper-content">
+        <div className="container">
+          {props.children}
+        </div>
+      </div>
     </div>
   </Aux>
 )
