@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 // import NavigationItems from '../NavigationItems/NavigationItems'
 
@@ -9,12 +10,12 @@ const toolbar = ( props ) => (
         <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" className="navbar-toggle collapsed" type="button">
           <i className="fa fa-reorder"></i>
         </button>
-        <a href="" className="navbar-brand">Hotspot</a>
+        <NavLink to="/" className="navbar-brand">Hotspot</NavLink>
       </div>
       <div className="navbar-collapse collapse" id="navbar">
         <ul className="nav navbar-nav">
           <li className="active">
-            <a aria-expanded="false" role="button" href=""> Dashboard</a>
+            <NavLink to="/dashboard" aria-expanded="false" role="button"> Dashboard</NavLink>
           </li>
           <li className="dropdown">
             <a aria-expanded="false" role="button" href="" className="dropdown-toggle" data-toggle="dropdown"> Companies <span className="caret"></span></a>
@@ -28,9 +29,9 @@ const toolbar = ( props ) => (
         </ul>
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <a href="">
-              <i className="fa fa-sign-out"></i> Log out
-            </a>
+            <NavLink to="/sign_in">
+              <i className="fa fa-sign-in"></i> Sign in
+            </NavLink>
           </li>
         </ul>
       </div>
