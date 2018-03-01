@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import App from './App'
-import reducer from './store/reducer'
+import authReducer from './store/reducers/auth'
 import registerServiceWorker from './registerServiceWorker'
 
 import 'jquery/src/jquery'
@@ -17,7 +17,7 @@ import './assets/styles/style.css'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
-  reducer: reducer
+  auth: authReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(
