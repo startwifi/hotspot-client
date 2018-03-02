@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Aux from '../Aux/Aux'
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 
 class Layout extends Component {
   render () {
+    const layout = (
+      <div>
+        <Toolbar />
+        <div className="wrapper wrapper-content">
+          <div className="container">
+            {this.props.children}
+          </div>
+        </div>
+      </div>
+    )
+
     return (
       <Aux>
         <div id="page-wrapper" className="gray-bg">
-          <Toolbar isAuthenticated={this.props.isAuthenticated} />
-          <div className="wrapper wrapper-content">
-            <div className="container">
-              {this.props.children}
-            </div>
-          </div>
+          { this.props.isAuthenticated ? layout : this.props.children }
         </div>
       </Aux>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    isAuthenticated: state.auth.token !== null
-  }
+Layout.propTypes = {
+  isAuthenticated: PropTypes.bool
 }
 
-export default connect(mapStateToProps)(Layout)
+export default Layout

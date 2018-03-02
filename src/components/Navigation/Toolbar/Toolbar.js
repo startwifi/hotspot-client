@@ -29,9 +29,7 @@ const toolbar = ( props ) => (
         </ul>
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            { props.isAuthenticated
-                ? <NavLink to="/sign_out"><i className="fa fa-sign-out"></i> Sign out</NavLink>
-                : <NavLink to="/sign_in"><i className="fa fa-sign-in"></i> Sign in</NavLink> }
+            <NavLink to="/sign_out"><i className="fa fa-sign-out"></i> Sign out</NavLink>
           </li>
         </ul>
       </div>

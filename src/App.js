@@ -13,14 +13,20 @@ class App extends Component {
 
   render () {
     return (
-      <Layout>
+      <Layout isAuthenticated={this.props.isAuthenticated}>
         <Switch>
           <Route path="/sign_in" component={SignIn} />
           <Route path="/sign_out" component={SignOut} />
-          <Route path="/" exact component={() => (<h1>Dashboard</h1>)} />
+          <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignIn} />
         </Switch>
       </Layout>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
   }
 }
 
@@ -30,4 +36,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
