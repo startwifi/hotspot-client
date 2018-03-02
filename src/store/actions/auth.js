@@ -39,3 +39,21 @@ export const signIn = (email, password) => {
       })
   }
 }
+
+export const setAuthRedirectPath = (path) => {
+  return {
+    type: actionTypes.SET_AUTH_REDIRECT_PATH,
+    path: path
+  }
+}
+
+export const authCheckState = () => {
+  return dispatch => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      dispatch(authSuccess(token))
+    } else {
+      dispatch(signOut())
+    }
+  }
+}

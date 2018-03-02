@@ -1,4 +1,6 @@
 export {
+  authCheckState,
   signIn,
-  signOut
+  signOut,
+  setAuthRedirectPath
 } from './auth'

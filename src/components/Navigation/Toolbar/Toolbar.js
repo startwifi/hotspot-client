@@ -15,7 +15,7 @@ const toolbar = ( props ) => (
       <div className="navbar-collapse collapse" id="navbar">
         <ul className="nav navbar-nav">
           <li className="active">
-            <NavLink to="/dashboard" aria-expanded="false" role="button"> Dashboard</NavLink>
+            <NavLink to="/" aria-expanded="false" role="button"> Dashboard</NavLink>
           </li>
           <li className="dropdown">
             <a aria-expanded="false" role="button" href="" className="dropdown-toggle" data-toggle="dropdown"> Companies <span className="caret"></span></a>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
 
@@ -23,6 +24,7 @@ class SignIn extends Component {
 
   render () {
     let errorMessage = null
+    let authRedirect = null
 
     if (this.props.error) {
       errorMessage = (
@@ -30,8 +32,13 @@ class SignIn extends Component {
       )
     }
 
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to={this.props.authRedirectPath} />
+    }
+
     return (
       <div className="middle-box text-center loginscreen animated fadeInDown">
+        {authRedirect}
         <div>
           <div>
             <h1 className="logo-name">H+</h1>
@@ -75,13 +82,15 @@ const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    authRedirectPath: state.auth.authRedirectPath
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password) => dispatch(actions.signIn(email, password)),
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   }
 }
 
