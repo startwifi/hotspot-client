@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
+import SignInForm from '../../components/Forms/SignInForm'
 
 class SignIn extends Component {
   state = {
@@ -14,11 +15,10 @@ class SignIn extends Component {
     this.setState({[controlName]: event.target.value})
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit = values => {
     this.props.onAuth(
-      this.state.email,
-      this.state.password
+      values.email,
+      values.password
     )
   }
 
@@ -45,32 +45,8 @@ class SignIn extends Component {
           </div>
           <h3>Welcome to Hotspot+</h3>
           <p>Sign in. To see it in action.</p>
-          <form onSubmit={this.handleSubmit} className="m-t">
-            {errorMessage}
-            <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required=""
-                className="form-control"
-                value={this.state.email}
-                onChange={(event) => this.handleInputChange(event)}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                required=""
-                className="form-control"
-                value={this.state.password}
-                onChange={(event) => this.handleInputChange(event)}
-              />
-            </div>
-            <button type="submit" className="btn btn-primary block full-width m-b">Sign in</button>
-          </form>
+          {errorMessage}
+          <SignInForm onSubmit={this.handleSubmit} />
           <p className="m-t"><small>Made with &hearts; 2018</small></p>
         </div>
       </div>
