@@ -15,6 +15,13 @@ export const authFailure = (error) => {
   }
 }
 
+export const signOut = () => {
+  localStorage.removeItem('token')
+  return {
+    type: actionTypes.AUTH_SIGNOUT
+  }
+}
+
 export const signIn = (email, password) => {
   return dispatch => {
     const authData = {
@@ -24,7 +31,6 @@ export const signIn = (email, password) => {
     axios
       .post('http://localhost:3000/api/v1/auth/sessions', authData)
       .then(response => {
-        console.log(response)
         localStorage.setItem('token', response.data.auth_token)
         dispatch(authSuccess(response.data.auth_token))
       })

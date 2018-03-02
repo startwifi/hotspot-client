@@ -14,6 +14,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, token: action.accessToken, error: null, loading: false }
     case actionTypes.SIGNIN_FAILURE:
       return { ...state, error: action.error, loading: false}
+    case actionTypes.AUTH_SIGNOUT:
+      return { ...state, token: null }
     default: return state
   }
 }
