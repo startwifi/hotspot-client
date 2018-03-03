@@ -7,6 +7,7 @@ import { reducer as formReducer } from 'redux-form'
 import thunk from 'redux-thunk'
 import App from './App'
 import authReducer from './store/reducers/auth'
+import companyReducer from './store/reducers/company'
 import registerServiceWorker from './registerServiceWorker'
 
 import 'jquery/src/jquery'
@@ -19,6 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  company: companyReducer,
   form: formReducer
 })
 
