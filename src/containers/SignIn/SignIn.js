@@ -5,16 +5,6 @@ import * as actions from '../../store/actions/index'
 import SignInForm from '../../components/Forms/SignInForm'
 
 class SignIn extends Component {
-  state = {
-    email: '',
-    password: ''
-  }
-
-  handleInputChange = event => {
-    const controlName = event.target.name
-    this.setState({[controlName]: event.target.value})
-  }
-
   handleSubmit = values => {
     this.props.onAuth(
       values.email,

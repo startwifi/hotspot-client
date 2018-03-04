@@ -5,6 +5,7 @@ import * as actions from './store/actions/index'
 import Layout from './hoc/Layout/Layout'
 import SignIn from './containers/SignIn/SignIn'
 import SignOut from './containers/SignOut/SignOut'
+import CompaniesList from './containers/Companies/List/List'
 
 class App extends Component {
   componentDidMount () {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <Layout isAuthenticated={this.props.isAuthenticated}>
         <Switch>
+          <Route path="/companies" component={CompaniesList} />
           <Route path="/sign_in" component={SignIn} />
           <Route path="/sign_out" component={SignOut} />
           <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignIn} />

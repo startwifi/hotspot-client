@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 // import NavigationItems from '../NavigationItems/NavigationItems'
 
@@ -20,10 +20,7 @@ const toolbar = ( props ) => (
           <li className="dropdown">
             <a aria-expanded="false" role="button" href="" className="dropdown-toggle" data-toggle="dropdown"> Companies <span className="caret"></span></a>
             <ul role="menu" className="dropdown-menu">
-              <li><a href="">Menu item</a></li>
-              <li><a href="">Menu item</a></li>
-              <li><a href="">Menu item</a></li>
-              <li><a href="">Menu item</a></li>
+              <li><Link to="/companies">All companies</Link></li>
             </ul>
           </li>
         </ul>
