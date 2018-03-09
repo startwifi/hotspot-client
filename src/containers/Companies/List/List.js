@@ -4,8 +4,8 @@ import CompaniesList from '../../../components/Companies/List/List'
 
 const mapStateToProps = state => {
   return {
-    companies: state.company.companies,
-    loading: state.company.loading,
+    companies: state.company.companyList.companies,
+    loading: state.company.companyList.loading,
     token: state.auth.token
   }
 }
