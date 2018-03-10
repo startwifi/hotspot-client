@@ -1,6 +1,7 @@
 import * as actionTypes from 'store/actions/actionTypes'
 
 const initialState = {
+  activeCompany: { company: null, error: null, loading: false },
   companyNew: { company: null, error: null, loading: false },
   companyList: { companies: [], error: null, loading: false }
 }
@@ -14,6 +15,12 @@ const reducer = (state = initialState, action) => {
       return { ...state, companyNew: { company: action.payload, error: null, loading: false } }
     case actionTypes.CREATE_COMPANY_FAILURE:
       return { ...state, companyNew: { company: null, error: action.payload, loading: false } }
+    case actionTypes.FETCH_COMPANY_START:
+      return { ...state, activeCompany: { company: null, error: null, loading: true } }
+    case actionTypes.FETCH_COMPANY_SUCCESS:
+      return { ...state, activeCompany: { company: action.payload, error: null, loading: false } }
+    case actionTypes.FETCH_COMPANY_FAILURE:
+      return { ...state, activeCompany: { company: null, error: action.payload, loading: false } }
     case actionTypes.FETCH_COMPANIES_START:
       return { ...state, companyList: { companies: [], error: null, loading: true } }
     case actionTypes.FETCH_COMPANIES_SUCCESS:

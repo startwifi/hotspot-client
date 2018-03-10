@@ -4,6 +4,7 @@ export {
   resetNewAdmin
 } from './admin'
 export {
+  fetchCompany,
   fetchCompanies,
   createCompany,
   resetNewCompany
