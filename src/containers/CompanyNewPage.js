@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import * as actions from '../../../store/actions/index'
-import CompanyNew from '../../../components/Companies/CompanyNew/CompanyNew'
+import * as actions from 'store/actions/index'
+import CompanyNew from 'components/CompanyNew'
 
 const mapStateToProps = state => {
   return {

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from './store/actions/index'
-import Layout from './hoc/Layout/Layout'
-import SignIn from './containers/SignIn/SignIn'
-import SignOut from './containers/SignOut/SignOut'
-import AdminList from './containers/Admin/List/List'
-import AdminNew from './containers/Admin/AdminNew/AdminNew'
-import CompaniesList from './containers/Companies/List/List'
-import CompanyNew from './containers/Companies/CompanyNew/CompanyNew'
+import * as actions from 'store/actions/index'
+import Layout from 'hoc/Layout'
+import SignInPage from 'containers/SignInPage'
+import SignOutPage from 'containers/SignOutPage'
+import AdminListPage from 'containers/AdminListPage'
+import AdminNewPage from 'containers/AdminNewPage'
+import CompanyListPage from 'containers/CompanyListPage'
+import CompanyNewPage from 'containers/CompanyNewPage'
 
 class App extends Component {
   componentDidMount () {
@@ -19,13 +19,13 @@ class App extends Component {
     return (
       <Layout isAuthenticated={this.props.isAuthenticated}>
         <Switch>
-          <Route path="/admins/new" component={AdminNew} />
-          <Route path="/admins" component={AdminList} />
-          <Route path="/companies/new" component={CompanyNew} />
-          <Route path="/companies" component={CompaniesList} />
-          <Route path="/sign_in" component={SignIn} />
-          <Route path="/sign_out" component={SignOut} />
-          <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignIn} />
+          <Route path="/admins/new" component={AdminNewPage} />
+          <Route path="/admins" component={AdminListPage} />
+          <Route path="/companies/new" component={CompanyNewPage} />
+          <Route path="/companies" component={CompanyListPage} />
+          <Route path="/sign_in" component={SignInPage} />
+          <Route path="/sign_out" component={SignOutPage} />
+          <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignInPage} />
         </Switch>
       </Layout>
     )

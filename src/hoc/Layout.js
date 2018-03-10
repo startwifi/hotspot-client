@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Aux from '../Aux/Aux'
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
+import Aux from 'hoc/Aux'
+import Toolbar from 'components/Toolbar'
 
 class Layout extends Component {
   render () {

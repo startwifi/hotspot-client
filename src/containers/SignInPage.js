@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from '../../store/actions/index'
-import SignInForm from '../../components/Forms/SignInForm'
+import * as actions from 'store/actions/index'
+import SignInForm from 'components/SignInForm'
 
-class SignIn extends Component {
+class SignInPage extends Component {
   handleSubmit = values => {
     this.props.onAuth(
       values.email,
@@ -60,4 +60,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignInPage)

@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import CompanyNewForm from '../../Forms/CompanyNewForm'
+import AdminNewForm from 'components/AdminNewForm'
 
-class CompanyNew extends Component {
-  componentDidMount () {
-    this.props.onFetchAdmins(this.props.token)
-  }
-
+class AdminNew extends Component {
   componentWillMount () {
-    this.props.onResetNewCompany()
+    this.props.onResetNewAdmin()
   }
 
   handleSubmit = values => {
-    this.props.onCreateCompany(
+    this.props.onCreateAdmin(
       this.props.token,
       values
     )
@@ -21,13 +17,13 @@ class CompanyNew extends Component {
   render () {
     let redirect = null
 
-    if (!this.props.loading && this.props.company) {
-      redirect = <Redirect to="/companies" />
+    if (!this.props.loading && this.props.admin) {
+      redirect = <Redirect to="/admins" />
     }
 
     return (
       <div>
-        <h1>New Company</h1>
+        <h1>New Admin</h1>
 
         <div className="row">
           {redirect}
@@ -35,10 +31,10 @@ class CompanyNew extends Component {
             <div className="col-md-8 col-md-offset-2">
               <div className="ibox float-e-margins">
                 <div className="ibox-title">
-                  <h5>New account</h5>
+                  <h5>New Admin</h5>
                 </div>
                 <div className="ibox-content">
-                  <CompanyNewForm onSubmit={this.handleSubmit} admins={this.props.admins} />
+                  <AdminNewForm onSubmit={this.handleSubmit} />
                 </div>
               </div>
             </div>
@@ -49,4 +45,4 @@ class CompanyNew extends Component {
   }
 }
 
-export default CompanyNew
+export default AdminNew

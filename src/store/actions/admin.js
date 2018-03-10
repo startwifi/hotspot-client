@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes'
-import axios from '../../utils/api'
+import axios from 'utils/api'
 
 export const createAdminStart = () => {
   return {

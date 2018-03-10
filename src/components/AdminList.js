@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ListItem from './ListItem'
+import AdminListItem from 'components/AdminListItem'
 
-class List extends Component {
+class AdminList extends Component {
   componentDidMount () {
     this.props.onFetchAdmins(this.props.token)
   }
@@ -12,7 +12,7 @@ class List extends Component {
 
     if (!this.props.loading && this.props.admins) {
       admins = this.props.admins.map(admin => (
-        <ListItem key={admin.id} admin={admin} />
+        <AdminListItem key={admin.id} admin={admin} />
       ))
     }
 
@@ -47,4 +47,4 @@ class List extends Component {
   }
 }
 
-export default List
+export default AdminList

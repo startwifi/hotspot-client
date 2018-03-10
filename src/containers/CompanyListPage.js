@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import * as actions from '../../../store/actions/index'
-import CompaniesList from '../../../components/Companies/List/List'
+import * as actions from 'store/actions/index'
+import CompanyList from 'components/CompanyList'
 
 const mapStateToProps = state => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompaniesList)
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyList)
