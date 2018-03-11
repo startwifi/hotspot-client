@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const listItem = (props) => {
+const companyListItem = (props) => {
   const { id, attributes } = props.company
 
   return (
@@ -23,4 +23,4 @@ const listItem = (props) => {
   )
 }
 
-export default listItem
+export default companyListItem

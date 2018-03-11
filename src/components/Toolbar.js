@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-// import NavigationItems from '../NavigationItems/NavigationItems'
-
 const toolbar = ( props ) => (
   <header className="row border-bottom white-bg">
     <nav className="navbar navbar-static-top">
@@ -21,6 +19,14 @@ const toolbar = ( props ) => (
             <a aria-expanded="false" role="button" href="" className="dropdown-toggle" data-toggle="dropdown"> Companies <span className="caret"></span></a>
             <ul role="menu" className="dropdown-menu">
               <li><Link to="/companies">All companies</Link></li>
+              <li><Link to="/companies/new">Add company</Link></li>
+            </ul>
+          </li>
+          <li className="dropdown">
+            <a aria-expanded="false" role="button" href="" className="dropdown-toggle" data-toggle="dropdown"> Admins <span className="caret"></span></a>
+            <ul role="menu" className="dropdown-menu">
+              <li><Link to="/admins">All admins</Link></li>
+              <li><Link to="/admins/new">Add admin</Link></li>
             </ul>
           </li>
         </ul>

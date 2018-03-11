@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ListItem from './ListItem'
+import CompanyListItem from 'components/CompanyListItem'
 
-class List extends Component {
+class CompanyList extends Component {
   componentDidMount () {
     this.props.onFetchCompanies(this.props.token)
   }
@@ -12,7 +12,7 @@ class List extends Component {
 
     if (!this.props.loading && this.props.companies) {
       companies = this.props.companies.map(company => (
-        <ListItem key={company.id} company={company} />
+        <CompanyListItem key={company.id} company={company} />
       ))
     }
 
@@ -47,4 +47,4 @@ class List extends Component {
   }
 }
 
-export default List
+export default CompanyList

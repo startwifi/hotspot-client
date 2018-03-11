@@ -1,5 +1,12 @@
 export {
-  fetchCompanies
+  fetchAdmins,
+  createAdmin,
+  resetNewAdmin
+} from './admin'
+export {
+  fetchCompanies,
+  createCompany,
+  resetNewCompany
 } from './company'
 export {
   authCheckState,
