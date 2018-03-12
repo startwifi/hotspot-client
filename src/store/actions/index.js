@@ -15,3 +15,7 @@ export {
   signOut,
   setAuthRedirectPath
 } from './auth'
+export {
+  fetchPlace,
+  fetchPlaces
+} from './place'
