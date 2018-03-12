@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import classnames from 'classnames'
 
 const adminListItem = (props) => {
   const { id, attributes } = props.admin
 
+  const statusClasses = classnames('label', {
+    'label-primary': attributes.active,
+    'label-default': !attributes.active
+  })
+
   return (
     <tr>
       <td className="project-status">
-        <span className="">
+        <span className={statusClasses}>
           { attributes.active === true ? "Active" : "Inactive" }
         </span>
       </td>

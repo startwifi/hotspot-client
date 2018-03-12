@@ -10,6 +10,7 @@ import AdminNewPage from 'containers/AdminNewPage'
 import CompanyListPage from 'containers/CompanyListPage'
 import CompanyNewPage from 'containers/CompanyNewPage'
 import CompanyDetailsPage from 'containers/CompanyDetailsPage'
+import PlaceDetailsPage from 'containers/PlaceDetailsPage'
 
 class App extends Component {
   componentDidMount () {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/companies/new" component={CompanyNewPage} />
           <Route path="/companies/:uuid" component={CompanyDetailsPage} />
           <Route path="/companies" component={CompanyListPage} />
+          <Route path="/places/:uuid" component={PlaceDetailsPage} />
           <Route path="/sign_in" component={SignInPage} />
           <Route path="/sign_out" component={SignOutPage} />
           <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignInPage} />

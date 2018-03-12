@@ -5,6 +5,7 @@ import CompanyDetails from 'components/CompanyDetails'
 const mapStateToProps = state => {
   return {
     company: state.company.activeCompany.company,
+    places: state.place.placeList.places,
     loading: state.company.activeCompany.loading,
     token: state.auth.token
   }
@@ -12,7 +13,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchCompany: (token, id) => dispatch(actions.fetchCompany(token, id))
+    onFetchCompany: (token, id) => dispatch(actions.fetchCompany(token, id)),
+    onFetchPlaces: (token, companyId) => dispatch(actions.fetchPlaces(token, companyId))
   }
 }
 
