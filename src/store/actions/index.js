@@ -4,6 +4,7 @@ export {
   resetNewAdmin
 } from './admin'
 export {
+  fetchCompany,
   fetchCompanies,
   createCompany,
   resetNewCompany
@@ -14,3 +15,7 @@ export {
   signOut,
   setAuthRedirectPath
 } from './auth'
+export {
+  fetchPlace,
+  fetchPlaces
+} from './place'

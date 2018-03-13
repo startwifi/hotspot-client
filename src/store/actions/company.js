@@ -31,6 +31,41 @@ export const createCompany = (token, company) => {
   }
 }
 
+export const fetchCompanyStart = () => {
+  return {
+    type: actionTypes.FETCH_COMPANY_START
+  }
+}
+
+export const fetchCompanySuccess = (company) => {
+  return {
+    type: actionTypes.FETCH_COMPANY_SUCCESS,
+    payload: company
+  }
+}
+
+export const fetchCompanyFailure = (error) => {
+  return {
+    type: actionTypes.FETCH_COMPANY_FAILURE,
+    payload: error
+  }
+}
+
+export const fetchCompany = (token, id) => {
+  return dispatch => {
+    dispatch(fetchCompanyStart())
+    axios.get( `/companies/${id}`, {
+      headers: {'Authorization': `bearer ${token}`}
+    } )
+    .then( res => {
+      dispatch(fetchCompanySuccess(res.data.data))
+    } )
+    .catch( error => {
+      dispatch(fetchCompanyFailure(error))
+    } )
+  }
+}
+
 export const fetchCompaniesStart = () => {
   return {
     type: actionTypes.FETCH_COMPANIES_START
