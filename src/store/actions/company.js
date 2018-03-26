@@ -13,8 +13,7 @@ export const createCompany = (token, company) => {
       type: 'companies',
       attributes: {
         name: company.name,
-        subdomain: company.subdomain,
-        ownerId: company.owner_id
+        ownerId: company.ownerId
       }
     }
   }
@@ -23,11 +22,69 @@ export const createCompany = (token, company) => {
     axios.defaults.headers.common['Authorization'] = `bearer ${token}`
     axios.post('/companies', requestData)
       .then( res => {
-        dispatch(fetchCompaniesSuccess(res.data.data))
+        dispatch(createCompanySuccess(res.data.data))
       } )
       .catch( error => {
-        dispatch(fetchCompaniesFailure(error))
+        dispatch(createCompanyFailure(error.response.data.errors))
       } )
+  }
+}
+
+export const createCompanySuccess = (company) => {
+  return {
+    type: actionTypes.CREATE_COMPANY_SUCCESS,
+    payload: company
+  }
+}
+
+export const createCompanyFailure = (error) => {
+  return {
+    type: actionTypes.CREATE_COMPANY_FAILURE,
+    payload: error
+  }
+}
+
+export const updateCompanyStart = () => {
+  return {
+    type: actionTypes.UPDATE_COMPANY_START
+  }
+}
+
+export const updateCompany = (token, id, attributes) => {
+  const requestData = {
+    data: {
+      type: 'companies',
+      id: id,
+      attributes: {
+        name: attributes.name,
+        ownerId: attributes.ownerId
+      }
+    }
+  }
+  return dispatch => {
+    dispatch(updateCompanyStart())
+    axios.defaults.headers.common['Authorization'] = `bearer ${token}`
+    axios.patch(`/companies/${id}`, requestData)
+      .then( res => {
+        dispatch(updateCompanySuccess(res.data.data))
+      } )
+      .catch( error => {
+        dispatch(updateCompanyFailure(error.response.data.errors))
+      } )
+  }
+}
+
+export const updateCompanySuccess = (company) => {
+  return {
+    type: actionTypes.UPDATE_COMPANY_SUCCESS,
+    payload: company
+  }
+}
+
+export const updateCompanyFailure = (error) => {
+  return {
+    type: actionTypes.UPDATE_COMPANY_FAILURE,
+    payload: error
   }
 }
 
@@ -102,5 +159,11 @@ export const fetchCompanies = (token) => {
 export const resetNewCompany = () => {
   return {
     type: actionTypes.RESET_NEW_COMPANY,
+  }
+}
+
+export const resetEditCompany = () => {
+  return {
+    type: actionTypes.RESET_EDIT_COMPANY,
   }
 }

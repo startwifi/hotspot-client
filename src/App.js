@@ -9,6 +9,7 @@ import AdminListPage from 'containers/AdminListPage'
 import AdminNewPage from 'containers/AdminNewPage'
 import CompanyListPage from 'containers/CompanyListPage'
 import CompanyNewPage from 'containers/CompanyNewPage'
+import CompanyEditPage from 'containers/CompanyEditPage'
 import CompanyDetailsPage from 'containers/CompanyDetailsPage'
 import PlaceDetailsPage from 'containers/PlaceDetailsPage'
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/admins/new" component={AdminNewPage} />
           <Route path="/admins" component={AdminListPage} />
           <Route path="/companies/new" component={CompanyNewPage} />
+          <Route path="/companies/:uuid/edit" component={CompanyEditPage} />
           <Route path="/companies/:uuid" component={CompanyDetailsPage} />
           <Route path="/companies" component={CompanyListPage} />
           <Route path="/places/:uuid" component={PlaceDetailsPage} />

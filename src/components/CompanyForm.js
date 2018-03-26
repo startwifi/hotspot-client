@@ -3,12 +3,15 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
 const companyNewForm = props => {
+
   const { handleSubmit, pristine, submitting, admins } = props
 
-  const ownerOptions = admins.map( admin => (
-    <option value={admin.id} key={admin.id}>
-      {admin.attributes.firstName} {admin.attributes.lastName} ({admin.attributes.email})
-    </option>
+  const ownerOptions = (
+    admins.map( admin => (
+      <option value={admin.id} key={admin.id}>
+        {admin.attributes.firstName} {admin.attributes.lastName} ({admin.attributes.email})
+      </option>
+    )
   ))
 
   return (
@@ -31,10 +34,10 @@ const companyNewForm = props => {
           <Field
             component="select"
             type="text"
-            name="owner_id"
+            name="ownerId"
             className="form-control"
           >
-            <option></option>
+            {props.initialValues ? null : <option></option>}
             {ownerOptions}
           </Field>
         </div>
