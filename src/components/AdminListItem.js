@@ -22,7 +22,7 @@ const adminListItem = (props) => {
         <small>{attributes.createdAt}</small>
       </td>
       <td className="project-actions">
-        <Link to={`/admins/${id}`} className="btn btn-sm btn-white"><i className="fa fa-folder" /> View</Link>
+        <Link to={`/admins/${id}`} className="btn btn-sm btn-white"><i className="fa fa-folder" /> View</Link>&nbsp;
         <Link to={`/admins/${id}/edit`} className="btn btn-sm btn-white"><i className="fa fa-pencil" /> Edit</Link>
       </td>
     </tr>

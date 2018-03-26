@@ -7,7 +7,9 @@ export {
   fetchCompany,
   fetchCompanies,
   createCompany,
-  resetNewCompany
+  updateCompany,
+  resetNewCompany,
+  resetEditCompany
 } from './company'
 export {
   authCheckState,
