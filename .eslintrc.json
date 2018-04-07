@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "standard",
+    "prettier/react"
+  ],
+  "env": {
+    "browser": true,
+    "jasmine": true
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "semi": "off",
+    "prettier/prettier": "error"
+  }
+}
