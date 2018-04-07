@@ -1,6 +1,6 @@
 {
   "extends": [
-    "airbnb",
+    "standard",
     "prettier/react"
   ],
   "env": {
@@ -12,9 +12,6 @@
   ],
   "rules": {
     "semi": "off",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
     "prettier/prettier": "error"
   }
 }
