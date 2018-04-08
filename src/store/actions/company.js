@@ -20,24 +20,25 @@ export const createCompany = (token, company) => {
   return dispatch => {
     dispatch(createCompanyStart())
     axios.defaults.headers.common['Authorization'] = `bearer ${token}`
-    axios.post('/companies', requestData)
-      .then( res => {
+    axios
+      .post('/companies', requestData)
+      .then(res => {
         dispatch(createCompanySuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(createCompanyFailure(error.response.data.errors))
-      } )
+      })
   }
 }
 
-export const createCompanySuccess = (company) => {
+export const createCompanySuccess = company => {
   return {
     type: actionTypes.CREATE_COMPANY_SUCCESS,
     payload: company
   }
 }
 
-export const createCompanyFailure = (error) => {
+export const createCompanyFailure = error => {
   return {
     type: actionTypes.CREATE_COMPANY_FAILURE,
     payload: error
@@ -64,24 +65,25 @@ export const updateCompany = (token, id, attributes) => {
   return dispatch => {
     dispatch(updateCompanyStart())
     axios.defaults.headers.common['Authorization'] = `bearer ${token}`
-    axios.patch(`/companies/${id}`, requestData)
-      .then( res => {
+    axios
+      .patch(`/companies/${id}`, requestData)
+      .then(res => {
         dispatch(updateCompanySuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(updateCompanyFailure(error.response.data.errors))
-      } )
+      })
   }
 }
 
-export const updateCompanySuccess = (company) => {
+export const updateCompanySuccess = company => {
   return {
     type: actionTypes.UPDATE_COMPANY_SUCCESS,
     payload: company
   }
 }
 
-export const updateCompanyFailure = (error) => {
+export const updateCompanyFailure = error => {
   return {
     type: actionTypes.UPDATE_COMPANY_FAILURE,
     payload: error
@@ -94,14 +96,14 @@ export const fetchCompanyStart = () => {
   }
 }
 
-export const fetchCompanySuccess = (company) => {
+export const fetchCompanySuccess = company => {
   return {
     type: actionTypes.FETCH_COMPANY_SUCCESS,
     payload: company
   }
 }
 
-export const fetchCompanyFailure = (error) => {
+export const fetchCompanyFailure = error => {
   return {
     type: actionTypes.FETCH_COMPANY_FAILURE,
     payload: error
@@ -111,15 +113,16 @@ export const fetchCompanyFailure = (error) => {
 export const fetchCompany = (token, id) => {
   return dispatch => {
     dispatch(fetchCompanyStart())
-    axios.get( `/companies/${id}`, {
-      headers: {'Authorization': `bearer ${token}`}
-    } )
-    .then( res => {
-      dispatch(fetchCompanySuccess(res.data.data))
-    } )
-    .catch( error => {
-      dispatch(fetchCompanyFailure(error))
-    } )
+    axios
+      .get(`/companies/${id}`, {
+        headers: { Authorization: `bearer ${token}` }
+      })
+      .then(res => {
+        dispatch(fetchCompanySuccess(res.data.data))
+      })
+      .catch(error => {
+        dispatch(fetchCompanyFailure(error))
+      })
   }
 }
 
@@ -129,41 +132,42 @@ export const fetchCompaniesStart = () => {
   }
 }
 
-export const fetchCompaniesSuccess = (companies) => {
+export const fetchCompaniesSuccess = companies => {
   return {
     type: actionTypes.FETCH_COMPANIES_SUCCESS,
     payload: companies
   }
 }
 
-export const fetchCompaniesFailure = (error) => {
+export const fetchCompaniesFailure = error => {
   return {
     type: actionTypes.FETCH_COMPANIES_FAILURE,
     payload: error
   }
 }
 
-export const fetchCompanies = (token) => {
+export const fetchCompanies = token => {
   return dispatch => {
     dispatch(fetchCompaniesStart())
-    axios.get('/companies', { headers: {'Authorization': `bearer ${token}`} })
-      .then( res => {
+    axios
+      .get('/companies', { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
         dispatch(fetchCompaniesSuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(fetchCompaniesFailure(error))
-      } )
+      })
   }
 }
 
 export const resetNewCompany = () => {
   return {
-    type: actionTypes.RESET_NEW_COMPANY,
+    type: actionTypes.RESET_NEW_COMPANY
   }
 }
 
 export const resetEditCompany = () => {
   return {
-    type: actionTypes.RESET_EDIT_COMPANY,
+    type: actionTypes.RESET_EDIT_COMPANY
   }
 }

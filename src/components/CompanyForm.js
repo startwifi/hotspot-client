@@ -3,15 +3,14 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
 const companyNewForm = props => {
-
   const { handleSubmit, pristine, submitting, admins } = props
 
-  const ownerOptions = (
-    admins.map( admin => (
-      <option value={admin.id} key={admin.id}>
-        {admin.attributes.firstName} {admin.attributes.lastName} ({admin.attributes.email})
-      </option>
-    )
+  const ownerOptions = admins.map(admin => (
+    <option value={admin.id} key={admin.id}>
+      {admin.attributes.firstName} {admin.attributes.lastName} ({
+        admin.attributes.email
+      })
+    </option>
   ))
 
   return (
@@ -37,7 +36,7 @@ const companyNewForm = props => {
             name="ownerId"
             className="form-control"
           >
-            {props.initialValues ? null : <option></option>}
+            {props.initialValues ? null : <option />}
             {ownerOptions}
           </Field>
         </div>
@@ -45,8 +44,16 @@ const companyNewForm = props => {
       <div className="hr-line-dashed" />
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">
-          <Link to="/companies" className="btn btn-white">Cancel</Link>
-          <button type="submit" className="btn btn-primary" disabled={pristine || submitting}>Submit</button>
+          <Link to="/companies" className="btn btn-white">
+            Cancel
+          </Link>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={pristine || submitting}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </form>

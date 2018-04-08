@@ -7,14 +7,14 @@ export const createAdminStart = () => {
   }
 }
 
-export const createAdminSuccess = (admin) => {
+export const createAdminSuccess = admin => {
   return {
     type: actionTypes.CREATE_ADMIN_SUCCESS,
     payload: admin
   }
 }
 
-export const createAdminFailure = (error) => {
+export const createAdminFailure = error => {
   return {
     type: actionTypes.CREATE_ADMIN_FAILURE,
     payload: error
@@ -37,13 +37,14 @@ export const createAdmin = (token, admin) => {
   return dispatch => {
     dispatch(createAdminStart())
     axios.defaults.headers.common['Authorization'] = `bearer ${token}`
-    axios.post('/admins', requestData)
-      .then( res => {
+    axios
+      .post('/admins', requestData)
+      .then(res => {
         dispatch(createAdminSuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(createAdminFailure(error))
-      } )
+      })
   }
 }
 
@@ -53,30 +54,31 @@ export const fetchAdminsStart = () => {
   }
 }
 
-export const fetchAdminsSuccess = (admins) => {
+export const fetchAdminsSuccess = admins => {
   return {
     type: actionTypes.FETCH_ADMINS_SUCCESS,
     payload: admins
   }
 }
 
-export const fetchAdminsFailure = (error) => {
+export const fetchAdminsFailure = error => {
   return {
     type: actionTypes.FETCH_ADMINS_FAILURE,
     payload: error
   }
 }
 
-export const fetchAdmins = (token) => {
+export const fetchAdmins = token => {
   return dispatch => {
     dispatch(fetchAdminsStart())
-    axios.get('/admins', { headers: {'Authorization': `bearer ${token}`} })
-      .then( res => {
+    axios
+      .get('/admins', { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
         dispatch(fetchAdminsSuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(fetchAdminsFailure(error))
-      } )
+      })
   }
 }
 

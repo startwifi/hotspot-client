@@ -26,15 +26,15 @@ class AdminList extends Component {
                 <div className="ibox-title">
                   <h5>Admins</h5>
                   <div className="ibox-tools">
-                    <Link to="/admins/new" className="btn btn-primary btn-xs">Create new admin</Link>
+                    <Link to="/admins/new" className="btn btn-primary btn-xs">
+                      Create new admin
+                    </Link>
                   </div>
                 </div>
                 <div className="ibox-content">
                   <div className="project-list">
                     <table className="table table-hover">
-                      <tbody>
-                        {admins}
-                      </tbody>
+                      <tbody>{admins}</tbody>
                     </table>
                   </div>
                 </div>

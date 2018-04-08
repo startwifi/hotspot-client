@@ -1,14 +1,14 @@
 import * as actionTypes from './actionTypes'
 import axios from 'utils/api'
 
-export const authSuccess = (token) => {
+export const authSuccess = token => {
   return {
     type: actionTypes.SIGNIN_SUCCESS,
     accessToken: token
   }
 }
 
-export const authFailure = (error) => {
+export const authFailure = error => {
   return {
     type: actionTypes.SIGNIN_FAILURE,
     error: error
@@ -40,7 +40,7 @@ export const signIn = (email, password) => {
   }
 }
 
-export const setAuthRedirectPath = (path) => {
+export const setAuthRedirectPath = path => {
   return {
     type: actionTypes.SET_AUTH_REDIRECT_PATH,
     path: path

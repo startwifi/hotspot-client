@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchAdmins: (token) => dispatch(actions.fetchAdmins(token))
+    onFetchAdmins: token => dispatch(actions.fetchAdmins(token))
   }
 }
 

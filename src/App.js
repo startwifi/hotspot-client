@@ -31,7 +31,13 @@ class App extends Component {
           <Route path="/places/:uuid" component={PlaceDetailsPage} />
           <Route path="/sign_in" component={SignInPage} />
           <Route path="/sign_out" component={SignOutPage} />
-          <Route path="/" exact component={this.props.isAuthenticated ? () => (<h1>Dashboard</h1>) : SignInPage} />
+          <Route
+            path="/"
+            exact
+            component={
+              this.props.isAuthenticated ? () => <h1>Dashboard</h1> : SignInPage
+            }
+          />
         </Switch>
       </Layout>
     )

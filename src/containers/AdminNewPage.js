@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCreateAdmin: (token, admin) => dispatch(actions.createAdmin(token, admin)),
+    onCreateAdmin: (token, admin) =>
+      dispatch(actions.createAdmin(token, admin)),
     onResetNewAdmin: () => dispatch(actions.resetNewAdmin())
   }
 }
