@@ -14,8 +14,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCreateCompany: (token, company) => dispatch(actions.createCompany(token, company)),
-    onFetchAdmins: (token) => dispatch(actions.fetchAdmins(token)),
+    onCreateCompany: (token, company) =>
+      dispatch(actions.createCompany(token, company)),
+    onFetchAdmins: token => dispatch(actions.fetchAdmins(token)),
     onResetNewCompany: () => dispatch(actions.resetNewCompany())
   }
 }

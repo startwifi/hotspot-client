@@ -54,8 +54,16 @@ const adminNewForm = props => {
       <div className="hr-line-dashed" />
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">
-          <Link to="/admins" className="btn btn-white">Cancel</Link>
-          <button type="submit" className="btn btn-primary" disabled={pristine || submitting}>Submit</button>
+          <Link to="/admins" className="btn btn-white">
+            Cancel
+          </Link>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={pristine || submitting}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </form>

@@ -26,15 +26,18 @@ class CompanyList extends Component {
                 <div className="ibox-title">
                   <h5>Companies</h5>
                   <div className="ibox-tools">
-                    <Link to="/companies/new" className="btn btn-primary btn-xs">Create new company</Link>
+                    <Link
+                      to="/companies/new"
+                      className="btn btn-primary btn-xs"
+                    >
+                      Create new company
+                    </Link>
                   </div>
                 </div>
                 <div className="ibox-content">
                   <div className="project-list">
                     <table className="table table-hover">
-                      <tbody>
-                        {companies}
-                      </tbody>
+                      <tbody>{companies}</tbody>
                     </table>
                   </div>
                 </div>

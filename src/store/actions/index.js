@@ -1,8 +1,4 @@
-export {
-  fetchAdmins,
-  createAdmin,
-  resetNewAdmin
-} from './admin'
+export { fetchAdmins, createAdmin, resetNewAdmin } from './admin'
 export {
   fetchCompany,
   fetchCompanies,
@@ -11,13 +7,5 @@ export {
   resetNewCompany,
   resetEditCompany
 } from './company'
-export {
-  authCheckState,
-  signIn,
-  signOut,
-  setAuthRedirectPath
-} from './auth'
-export {
-  fetchPlace,
-  fetchPlaces
-} from './place'
+export { authCheckState, signIn, signOut, setAuthRedirectPath } from './auth'
+export { fetchPlace, fetchPlaces } from './place'

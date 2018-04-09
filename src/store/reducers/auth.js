@@ -8,18 +8,23 @@ const initialState = {
   authRedirectPath: '/'
 }
 
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SIGNIN_SUCCESS:
-      return { ...state, token: action.accessToken, error: null, loading: false }
+      return {
+        ...state,
+        token: action.accessToken,
+        error: null,
+        loading: false
+      }
     case actionTypes.SIGNIN_FAILURE:
-      return { ...state, error: action.error, loading: false}
+      return { ...state, error: action.error, loading: false }
     case actionTypes.AUTH_SIGNOUT:
       return { ...state, token: null }
     case actionTypes.SET_AUTH_REDIRECT_PATH:
       return { ...state, authRedirectPath: action.path }
-    default: return state
+    default:
+      return state
   }
 }
 

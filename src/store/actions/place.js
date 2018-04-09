@@ -7,14 +7,14 @@ export const fetchPlaceStart = () => {
   }
 }
 
-export const fetchPlaceSuccess = (place) => {
+export const fetchPlaceSuccess = place => {
   return {
     type: actionTypes.FETCH_PLACE_SUCCESS,
     payload: place
   }
 }
 
-export const fetchPlaceFailure = (error) => {
+export const fetchPlaceFailure = error => {
   return {
     type: actionTypes.FETCH_PLACE_FAILURE,
     payload: error
@@ -24,13 +24,14 @@ export const fetchPlaceFailure = (error) => {
 export const fetchPlace = (token, id) => {
   return dispatch => {
     dispatch(fetchPlaceStart())
-    axios.get(`/places/${id}`, { headers: {'Authorization': `bearer ${token}`} })
-      .then( res => {
+    axios
+      .get(`/places/${id}`, { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
         dispatch(fetchPlaceSuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(fetchPlaceFailure(error))
-      } )
+      })
   }
 }
 
@@ -40,29 +41,30 @@ export const fetchPlacesStart = () => {
   }
 }
 
-export const fetchPlacesSuccess = (places) => {
+export const fetchPlacesSuccess = places => {
   return {
     type: actionTypes.FETCH_PLACES_SUCCESS,
     payload: places
   }
 }
 
-export const fetchPlacesFailure = (error) => {
+export const fetchPlacesFailure = error => {
   return {
     type: actionTypes.FETCH_PLACES_FAILURE,
     payload: error
   }
 }
 
-export const fetchPlaces = (token) => {
+export const fetchPlaces = token => {
   return dispatch => {
     dispatch(fetchPlacesStart())
-    axios.get('/places', { headers: {'Authorization': `bearer ${token}`} })
-      .then( res => {
+    axios
+      .get('/places', { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
         dispatch(fetchPlacesSuccess(res.data.data))
-      } )
-      .catch( error => {
+      })
+      .catch(error => {
         dispatch(fetchPlacesFailure(error))
-      } )
+      })
   }
 }

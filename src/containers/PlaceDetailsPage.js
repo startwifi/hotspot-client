@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchPlace: (token, id) => dispatch(actions.fetchPlace(token, id)),
+    onFetchPlace: (token, id) => dispatch(actions.fetchPlace(token, id))
   }
 }
 

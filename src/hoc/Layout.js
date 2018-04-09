@@ -9,9 +9,7 @@ class Layout extends Component {
       <div>
         <Toolbar />
         <div className="wrapper wrapper-content">
-          <div className="container">
-            {this.props.children}
-          </div>
+          <div className="container">{this.props.children}</div>
         </div>
       </div>
     )
@@ -19,7 +17,7 @@ class Layout extends Component {
     return (
       <Aux>
         <div id="page-wrapper" className="gray-bg">
-          { this.props.isAuthenticated ? layout : this.props.children }
+          {this.props.isAuthenticated ? layout : this.props.children}
         </div>
       </Aux>
     )

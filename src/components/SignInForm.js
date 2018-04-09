@@ -27,7 +27,10 @@ const signInForm = props => {
       <button
         type="submit"
         disabled={pristine || submitting}
-        className="btn btn-primary block full-width m-b">Sign in</button>
+        className="btn btn-primary block full-width m-b"
+      >
+        Sign in
+      </button>
     </form>
   )
 }
