@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
 const companyNewForm = props => {
-  const { handleSubmit, pristine, submitting, admins } = props
+  const { handleSubmit, pristine, submitting, admins, errors } = props
 
   const ownerOptions = admins.map(admin => (
     <option value={admin.id} key={admin.id}>
@@ -13,8 +13,21 @@ const companyNewForm = props => {
     </option>
   ))
 
+  const renderError = errors => {
+    if (errors) {
+      return (
+        <div className="alert alert-danger">
+          <ul>
+            {errors.map((error, index) => <li key={index}>{error.detail}</li>)}
+          </ul>
+        </div>
+      )
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
+      {renderError(props.errors)}
       <div className="form-group">
         <label className="col-md-2 control-label">Name</label>
         <div className="col-md-10">
@@ -46,7 +59,7 @@ const companyNewForm = props => {
         <div className="col-md-8 col-md-offset-2">
           <Link to="/companies" className="btn btn-white">
             Cancel
-          </Link>
+          </Link>&nbsp;
           <button
             type="submit"
             className="btn btn-primary"
