@@ -20,6 +20,9 @@ const select = props => {
       <label className="col-md-2 control-label">{label}</label>
       <div className="col-md-10">
         <select {...input} type={type} className="form-control">
+          <option value="" disabled>
+            Choose a company owner...
+          </option>
           {options}
         </select>
         <div className="help-block">

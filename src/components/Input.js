@@ -28,6 +28,5 @@ const input = props => {
     </div>
   )
 }
-        // {props.initialValues ? null : <option />}
 
 export default input

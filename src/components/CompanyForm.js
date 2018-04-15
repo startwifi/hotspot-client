@@ -1,8 +1,23 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
+import Input from 'components/Input'
+import Select from 'components/Select'
 
-const companyNewForm = props => {
+const validate = values => {
+  const errors = {}
+
+  if (!values.name || values.name.trim() === '') {
+    errors.name = 'Enter a company name'
+  }
+  if (!values.ownerId || values.ownerId.trim() === '') {
+    errors.ownerId = 'Choose a company owner'
+  }
+
+  return errors
+}
+
+const companyForm = props => {
   const { handleSubmit, pristine, submitting, admins, errors } = props
 
   const ownerOptions = admins.map(admin => (
@@ -28,32 +43,14 @@ const companyNewForm = props => {
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
       {renderError(props.errors)}
-      <div className="form-group">
-        <label className="col-md-2 control-label">Name</label>
-        <div className="col-md-10">
-          <Field
-            component="input"
-            type="text"
-            name="name"
-            className="form-control"
-          />
-        </div>
-      </div>
+      <Field component={Input} type="text" name="name" label="Name" />
       <div className="hr-line-dashed" />
-      <div className="form-group">
-        <label className="col-md-2 control-label">Owner</label>
-        <div className="col-md-10">
-          <Field
-            component="select"
-            type="text"
-            name="ownerId"
-            className="form-control"
-          >
-            {props.initialValues ? null : <option />}
-            {ownerOptions}
-          </Field>
-        </div>
-      </div>
+      <Field
+        component={Select}
+        name="ownerId"
+        label="Owner"
+        options={ownerOptions}
+      />
       <div className="hr-line-dashed" />
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">
@@ -74,5 +71,6 @@ const companyNewForm = props => {
 }
 
 export default reduxForm({
-  form: 'companyNewForm'
-})(companyNewForm)
+  form: 'companyForm',
+  validate
+})(companyForm)
