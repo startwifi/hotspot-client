@@ -49,6 +49,7 @@ const companyForm = props => {
         component={Select}
         name="ownerId"
         label="Owner"
+        defaultOption="Choose a company owner..."
         options={ownerOptions}
       />
       <div className="hr-line-dashed" />
