@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import AdminNewForm from 'components/AdminNewForm'
+import AdminForm from 'components/AdminForm'
 
 class AdminNew extends Component {
   componentWillMount () {
@@ -15,10 +15,15 @@ class AdminNew extends Component {
   }
 
   render () {
+    let formErrors = null
     let redirect = null
 
     if (!this.props.loading && this.props.admin) {
       redirect = <Redirect to="/admins" />
+    }
+
+    if (!this.props.loading && this.props.error) {
+      formErrors = this.props.error
     }
 
     return (
@@ -34,7 +39,7 @@ class AdminNew extends Component {
                   <h5>New Admin</h5>
                 </div>
                 <div className="ibox-content">
-                  <AdminNewForm onSubmit={this.handleSubmit} />
+                  <AdminForm onSubmit={this.handleSubmit} errors={formErrors} />
                 </div>
               </div>
             </div>

@@ -2,31 +2,28 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 import Input from 'components/Input'
-import Select from 'components/Select'
 
 const validate = values => {
   const errors = {}
 
-  if (!values.name || values.name.trim() === '') {
-    errors.name = 'Enter a company name'
+  if (!values.firstName || values.firstName.trim() === '') {
+    errors.firstName = 'Enter a first name'
   }
-  if (!values.ownerId || values.ownerId.trim() === '') {
-    errors.ownerId = 'Choose a company owner'
+  if (!values.lastName || values.lastName.trim() === '') {
+    errors.lastName = 'Enter a last name'
+  }
+  if (!values.email || values.email.trim() === '') {
+    errors.email = 'Enter an email'
+  }
+  if (!values.password || values.password.trim() === '') {
+    errors.password = 'Enter an admin password'
   }
 
   return errors
 }
 
-const companyForm = props => {
-  const { handleSubmit, pristine, submitting, admins, errors } = props
-
-  const ownerOptions = admins.map(admin => (
-    <option value={admin.id} key={admin.id}>
-      {admin.attributes.firstName} {admin.attributes.lastName} ({
-        admin.attributes.email
-      })
-    </option>
-  ))
+const adminForm = props => {
+  const { handleSubmit, pristine, submitting, errors } = props
 
   const renderError = errors => {
     if (errors) {
@@ -43,19 +40,14 @@ const companyForm = props => {
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
       {renderError(errors)}
-      <Field component={Input} type="text" name="name" label="Name" />
-      <div className="hr-line-dashed" />
-      <Field
-        component={Select}
-        name="ownerId"
-        label="Owner"
-        defaultOption="Choose a company owner..."
-        options={ownerOptions}
-      />
+      <Field component={Input} type="text" name="firstName" label="First name" />
+      <Field component={Input} type="text" name="lastName" label="Last name" />
+      <Field component={Input} type="email" name="email" label="Email" />
+      <Field component={Input} type="password" name="password" label="Password" />
       <div className="hr-line-dashed" />
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">
-          <Link to="/companies" className="btn btn-white">
+          <Link to="/admins" className="btn btn-white">
             Cancel
           </Link>&nbsp;
           <button
@@ -72,6 +64,6 @@ const companyForm = props => {
 }
 
 export default reduxForm({
-  form: 'companyForm',
+  form: 'adminForm',
   validate
-})(companyForm)
+})(adminForm)

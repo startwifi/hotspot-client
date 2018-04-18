@@ -13,6 +13,7 @@ const input = props => {
     'form-group': true,
     'has-error': !!(touched & invalid)
   })
+  console.log(invalid)
 
   return (
     <div className={divClasses}>
