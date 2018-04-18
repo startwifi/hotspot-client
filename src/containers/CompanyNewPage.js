@@ -6,8 +6,8 @@ const mapStateToProps = state => {
   return {
     company: state.company.companyNew.company,
     admins: state.admin.adminList.admins,
-    loading: state.company.companyList.loading,
-    error: state.company.companyList.error,
+    loading: state.company.companyNew.loading,
+    error: state.company.companyNew.error,
     token: state.auth.token
   }
 }

@@ -27,8 +27,8 @@ export const createAdmin = (token, admin) => {
       type: 'admins',
       attributes: {
         email: admin.email,
-        firstName: admin.first_name,
-        lastName: admin.last_name,
+        firstName: admin.firstName,
+        lastName: admin.lastName,
         password: admin.password
       }
     }
@@ -43,7 +43,7 @@ export const createAdmin = (token, admin) => {
         dispatch(createAdminSuccess(res.data.data))
       })
       .catch(error => {
-        dispatch(createAdminFailure(error))
+        dispatch(createAdminFailure(error.response.data.errors))
       })
   }
 }

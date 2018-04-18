@@ -19,10 +19,15 @@ class CompanyNew extends Component {
   }
 
   render () {
+    let formErrors = null
     let redirect = null
 
     if (!this.props.loading && this.props.company) {
       redirect = <Redirect to="/companies" />
+    }
+
+    if (!this.props.loading && this.props.error) {
+      formErrors = this.props.error
     }
 
     return (
@@ -38,7 +43,11 @@ class CompanyNew extends Component {
                   <h5>New company</h5>
                 </div>
                 <div className="ibox-content">
-                  <CompanyForm onSubmit={this.handleSubmit} admins={this.props.admins} />
+                  <CompanyForm
+                    onSubmit={this.handleSubmit}
+                    admins={this.props.admins}
+                    errors={formErrors}
+                  />
                 </div>
               </div>
             </div>
