@@ -7,6 +7,7 @@ import SignInPage from 'containers/SignInPage'
 import SignOutPage from 'containers/SignOutPage'
 import AdminListPage from 'containers/AdminListPage'
 import AdminNewPage from 'containers/AdminNewPage'
+import AdminEditPage from 'containers/AdminEditPage'
 import CompanyListPage from 'containers/CompanyListPage'
 import CompanyNewPage from 'containers/CompanyNewPage'
 import CompanyEditPage from 'containers/CompanyEditPage'
@@ -23,6 +24,7 @@ class App extends Component {
       <Layout isAuthenticated={this.props.isAuthenticated}>
         <Switch>
           <Route path="/admins/new" component={AdminNewPage} />
+          <Route path="/admins/:uuid/edit" component={AdminEditPage} />
           <Route path="/admins" component={AdminListPage} />
           <Route path="/companies/new" component={CompanyNewPage} />
           <Route path="/companies/:uuid/edit" component={CompanyEditPage} />
