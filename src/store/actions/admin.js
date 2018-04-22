@@ -48,6 +48,89 @@ export const createAdmin = (token, admin) => {
   }
 }
 
+export const updateAdminStart = () => {
+  return {
+    type: actionTypes.UPDATE_ADMIN_START
+  }
+}
+
+export const updateAdminSuccess = admin => {
+  return {
+    type: actionTypes.UPDATE_ADMIN_SUCCESS,
+    payload: admin
+  }
+}
+
+export const updateAdminFailure = error => {
+  return {
+    type: actionTypes.UPDATE_ADMIN_FAILURE,
+    payload: error
+  }
+}
+
+export const updateAdmin = (token, id, attributes) => {
+  const requestData = {
+    data: {
+      type: 'admins',
+      id: id,
+      attributes: {
+        firstName: attributes.firstName,
+        lastName: attributes.lastName,
+        email: attributes.email,
+        password: attributes.password
+      }
+    }
+  }
+  return dispatch => {
+    dispatch(updateAdminStart())
+    axios.defaults.headers.common['Authorization'] = `bearer ${token}`
+    axios
+      .patch(`/admins/${id}`, requestData)
+      .then(res => {
+        dispatch(updateAdminSuccess(res.data.data))
+      })
+      .catch(error => {
+        dispatch(updateAdminFailure(error.response.data.errors))
+      })
+  }
+}
+
+export const fetchAdminStart = () => {
+  return {
+    type: actionTypes.FETCH_ADMIN_START
+  }
+}
+
+export const fetchAdminSuccess = admin => {
+  return {
+    type: actionTypes.FETCH_ADMIN_SUCCESS,
+    payload: admin
+  }
+}
+
+export const fetchAdminFailure = error => {
+  return {
+    type: actionTypes.FETCH_ADMIN_FAILURE,
+    payload: error
+  }
+}
+
+export const fetchAdmin = (token, id) => {
+  return dispatch => {
+    dispatch(fetchAdminStart())
+    axios
+      .get(`/admins/${id}`, {
+        headers: { Authorization: `bearer ${token}` }
+      })
+      .then(res => {
+        dispatch(fetchAdminSuccess(res.data.data))
+      })
+      .catch(error => {
+        dispatch(fetchAdminFailure(error.response.data.errors))
+      })
+  }
+}
+
 export const fetchAdminsStart = () => {
   return {
     type: actionTypes.FETCH_ADMINS_START
@@ -85,5 +168,11 @@ export const fetchAdmins = token => {
 export const resetNewAdmin = () => {
   return {
     type: actionTypes.RESET_NEW_ADMIN
+  }
+}
+
+export const resetEditAdmin = () => {
+  return {
+    type: actionTypes.RESET_EDIT_ADMIN
   }
 }
