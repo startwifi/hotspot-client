@@ -1,4 +1,11 @@
-export { fetchAdmins, createAdmin, resetNewAdmin } from './admin'
+export {
+  fetchAdmin,
+  fetchAdmins,
+  createAdmin,
+  updateAdmin,
+  resetNewAdmin,
+  resetEditAdmin
+} from './admin'
 export {
   fetchCompany,
   fetchCompanies,
