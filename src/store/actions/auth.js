@@ -29,7 +29,7 @@ export const signIn = (email, password) => {
       password: password
     }
     axios
-      .post('http://localhost:3000/api/v1/auth/sessions', authData)
+      .post('/auth/sessions', authData)
       .then(response => {
         localStorage.setItem('token', response.data.auth_token)
         dispatch(authSuccess(response.data.auth_token))
@@ -50,10 +50,18 @@ export const setAuthRedirectPath = path => {
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem('token')
-    if (token) {
-      dispatch(authSuccess(token))
-    } else {
-      dispatch(signOut())
+
+    if (!token || token === '') {
+      return
     }
+
+    axios
+      .get('/auth/me', { headers: { Authorization: `bearer ${token}` } })
+      .then(response => {
+        dispatch(authSuccess(token))
+      })
+      .catch(error => {
+        dispatch(signOut())
+      })
   }
 }
