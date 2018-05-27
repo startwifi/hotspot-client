@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from 'store/actions/index'
+import AuthLayout from 'hoc/AuthLayout'
 import Layout from 'hoc/Layout'
 import SignInPage from 'containers/SignInPage'
 import SignOutPage from 'containers/SignOutPage'
@@ -20,8 +21,8 @@ class App extends Component {
   }
 
   render () {
-    return (
-      <Layout isAuthenticated={this.props.isAuthenticated}>
+    const authLayout = (
+      <AuthLayout>
         <Switch>
           <Route path="/admins/new" component={AdminNewPage} />
           <Route path="/admins/:uuid/edit" component={AdminEditPage} />
@@ -31,18 +32,22 @@ class App extends Component {
           <Route path="/companies/:uuid" component={CompanyDetailsPage} />
           <Route path="/companies" component={CompanyListPage} />
           <Route path="/places/:uuid" component={PlaceDetailsPage} />
-          <Route path="/sign_in" component={SignInPage} />
           <Route path="/sign_out" component={SignOutPage} />
-          <Route
-            path="/"
-            exact
-            component={
-              this.props.isAuthenticated ? () => <h1>Dashboard</h1> : SignInPage
-            }
-          />
+          <Route path="/" exact component={() => <h1>Dashboard</h1>} />
+        </Switch>
+      </AuthLayout>
+    )
+
+    const layout = (
+      <Layout>
+        <Switch>
+          <Route path="/sign_in" component={SignInPage} />
+          <Route path="/" exact component={SignInPage} />
         </Switch>
       </Layout>
     )
+
+    return this.props.isAuthenticated ? authLayout : layout
   }
 }
 
