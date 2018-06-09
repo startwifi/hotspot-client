@@ -14,6 +14,7 @@ import CompanyNewPage from 'containers/CompanyNewPage'
 import CompanyEditPage from 'containers/CompanyEditPage'
 import CompanyDetailsPage from 'containers/CompanyDetailsPage'
 import PlaceDetailsPage from 'containers/PlaceDetailsPage'
+import NotFound from 'components/NotFound'
 
 class App extends Component {
   componentDidMount () {
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path="/places/:uuid" component={PlaceDetailsPage} />
           <Route path="/sign_out" component={SignOutPage} />
           <Route path="/" exact component={() => <h1>Dashboard</h1>} />
+          <Route component={NotFound} />
         </Switch>
       </AuthLayout>
     )
@@ -43,6 +45,7 @@ class App extends Component {
         <Switch>
           <Route path="/sign_in" component={SignInPage} />
           <Route path="/" exact component={SignInPage} />
+          <Route component={NotFound} />
         </Switch>
       </Layout>
     )
