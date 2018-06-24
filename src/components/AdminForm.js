@@ -40,10 +40,20 @@ const adminForm = props => {
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
       {renderError(errors)}
-      <Field component={Input} type="text" name="firstName" label="First name" />
+      <Field
+        component={Input}
+        type="text"
+        name="firstName"
+        label="First name"
+      />
       <Field component={Input} type="text" name="lastName" label="Last name" />
       <Field component={Input} type="email" name="email" label="Email" />
-      <Field component={Input} type="password" name="password" label="Password" />
+      <Field
+        component={Input}
+        type="password"
+        name="password"
+        label="Password"
+      />
       <div className="hr-line-dashed" />
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">

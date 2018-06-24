@@ -12,14 +12,16 @@ const settingsForm = props => {
         key={providerName}
         providerName={providerName}
         actions={attributes.eligibleActions[providerName]}
-        initialValues={attributes.providers.find((provider) => provider.name === providerName)}
+        initialValues={attributes.providers.find(
+          provider => provider.name === providerName
+        )}
       />
     ))
   }
 
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
-      {providers ? displayProviderForms(providers) : null }
+      {providers ? displayProviderForms(providers) : null}
       <div className="form-group">
         <div className="col-md-8 col-md-offset-2">
           <Link to="/companies" className="btn btn-white">

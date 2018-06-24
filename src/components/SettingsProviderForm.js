@@ -20,21 +20,21 @@ const settingsProviderForm = props => {
         type="text"
         name="name"
         label="Name"
-        input={{defaultValue: providerName}}
+        input={{ defaultValue: providerName }}
       />
       <Field
         component={Input}
         type="text"
         name="apiKey"
         label="Api key"
-        input={{value: initialValues ? initialValues.apiKey : ''}}
+        input={{ value: initialValues ? initialValues.apiKey : '' }}
       />
       <Field
         component={Input}
         type="text"
         name="apiSecret"
         label="Api secret"
-        input={{value: initialValues ? initialValues.apiSecret : ''}}
+        input={{ value: initialValues ? initialValues.apiSecret : '' }}
       />
       <Field
         component={Select}

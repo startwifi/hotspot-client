@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchSettings: (token, id) => dispatch(actions.fetchCompanySettings(token, id)),
+    onFetchSettings: (token, id) =>
+      dispatch(actions.fetchCompanySettings(token, id)),
     onUpdateSettings: (token, id, settings) =>
       dispatch(actions.updateCompanySettings(token, id, settings)),
     onResetSettings: () => dispatch(actions.resetEditCompanySettings())
