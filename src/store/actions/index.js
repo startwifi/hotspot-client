@@ -14,5 +14,10 @@ export {
   resetNewCompany,
   resetEditCompany
 } from './company'
+export {
+  fetchCompanySettings,
+  updateCompanySettings,
+  resetEditCompanySettings
+} from './settings'
 export { authCheckState, signIn, signOut, setAuthRedirectPath } from './auth'
 export { fetchPlace, fetchPlaces } from './place'

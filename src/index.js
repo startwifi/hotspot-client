@@ -10,6 +10,7 @@ import adminReducer from 'store/reducers/admin'
 import authReducer from 'store/reducers/auth'
 import companyReducer from 'store/reducers/company'
 import placeReducer from 'store/reducers/place'
+import settingsReducer from 'store/reducers/settings'
 import registerServiceWorker from 'registerServiceWorker'
 
 import 'jquery/src/jquery'
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   company: companyReducer,
   place: placeReducer,
+  settings: settingsReducer,
   form: formReducer
 })
 

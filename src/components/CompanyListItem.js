@@ -23,6 +23,9 @@ const companyListItem = props => {
         <small>{attributes.createdAt}</small>
       </td>
       <td className="project-actions">
+        <Link to={`/settings/${id}/edit`} className="btn btn-sm btn-white">
+          <i className="fa fa-cog" /> Settings
+        </Link>&nbsp;
         <Link to={`/companies/${id}`} className="btn btn-sm btn-white">
           <i className="fa fa-folder" /> View
         </Link>&nbsp;
