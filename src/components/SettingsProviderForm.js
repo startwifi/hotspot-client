@@ -1,10 +1,11 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import Input from 'components/Input'
 import Select from 'components/Select'
 
 const settingsProviderForm = props => {
   const { providerName, actions, initialValues } = props
+  console.log(providerName + ': ' + initialValues)
 
   const actionOptions = actions.map(action => (
     <option value={action} key={action}>
@@ -27,14 +28,14 @@ const settingsProviderForm = props => {
         type="text"
         name="apiKey"
         label="Api key"
-        input={{ value: initialValues ? initialValues.apiKey : '' }}
+        input={{ value: initialValues ? initialValues.apiKey : undefined }}
       />
       <Field
         component={Input}
         type="text"
         name="apiSecret"
         label="Api secret"
-        input={{ value: initialValues ? initialValues.apiSecret : '' }}
+        input={{ value: initialValues ? initialValues.apiSecret : undefined }}
       />
       <Field
         component={Select}
@@ -48,4 +49,6 @@ const settingsProviderForm = props => {
   )
 }
 
-export default settingsProviderForm
+export default reduxForm({
+  form: 'settingsProviderForm'
+})(settingsProviderForm)

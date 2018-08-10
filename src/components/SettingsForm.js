@@ -10,6 +10,7 @@ const settingsForm = props => {
     return attributes.availableProviders.map(providerName => (
       <SettingsProviderForm
         key={providerName}
+        form={providerName}
         providerName={providerName}
         actions={attributes.eligibleActions[providerName]}
         initialValues={attributes.providers.find(
@@ -30,7 +31,7 @@ const settingsForm = props => {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={pristine || submitting}
+            disabled={submitting}
           >
             Submit
           </button>

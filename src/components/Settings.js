@@ -28,7 +28,7 @@ class Settings extends Component {
     if (!this.props.loading && this.props.settings) {
       // console.log(this.props.settings)
       attributes = this.props.settings.settings[this.props.match.params.uuid].attributes
-      // initialValues = { ...this.props.settings.settings[this.props.match.params.uuid].attributes }
+      initialValues = { ...this.props.settings.settings[this.props.match.params.uuid].attributes }
     }
 
     if (!this.props.loading && this.props.error) {
