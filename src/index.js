@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
 import thunk from 'redux-thunk'
 import App from 'App'
 import adminReducer from 'store/reducers/admin'
@@ -27,8 +26,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   company: companyReducer,
   place: placeReducer,
-  settings: settingsReducer,
-  form: formReducer
+  settings: settingsReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
