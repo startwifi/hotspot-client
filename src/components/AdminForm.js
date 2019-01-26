@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Form, Field } from 'react-final-form'
 import { Link } from 'react-router-dom'
 import Input from 'components/Input'
 
@@ -38,7 +38,7 @@ const adminForm = props => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-horizontal">
+    <Form onSubmit={handleSubmit} className="form-horizontal">
       {renderError(errors)}
       <Field
         component={Input}
@@ -69,11 +69,8 @@ const adminForm = props => {
           </button>
         </div>
       </div>
-    </form>
+    </Form>
   )
 }
 
-export default reduxForm({
-  form: 'adminForm',
-  validate
-})(adminForm)
+export default adminForm

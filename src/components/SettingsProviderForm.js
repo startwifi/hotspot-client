@@ -1,5 +1,5 @@
 import React from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { Form, Field } from 'react-final-form'
 import Input from 'components/Input'
 import Select from 'components/Select'
 
@@ -18,28 +18,27 @@ const settingsProviderForm = props => {
       <h2>{providerName}</h2>
       <Field
         component={Input}
-        type="text"
+        type="hidden"
         name="name"
-        label="Name"
         input={{ defaultValue: providerName }}
       />
       <Field
         component={Input}
         type="text"
-        name="apiKey"
+        name={`${providerName}[apiKey]`}
         label="Api key"
         input={{ value: initialValues ? initialValues.apiKey : undefined }}
       />
       <Field
         component={Input}
         type="text"
-        name="apiSecret"
+        name={`${providerName}[apiSecret]`}
         label="Api secret"
         input={{ value: initialValues ? initialValues.apiSecret : undefined }}
       />
       <Field
         component={Select}
-        name="action"
+        name={`${providerName}[action]`}
         label="Action"
         defaultOption="Choose a provider action..."
         options={actionOptions}
@@ -49,6 +48,4 @@ const settingsProviderForm = props => {
   )
 }
 
-export default reduxForm({
-  form: 'settingsProviderForm'
-})(settingsProviderForm)
+export default settingsProviderForm

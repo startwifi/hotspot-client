@@ -26,7 +26,6 @@ class Settings extends Component {
     // let redirect = null
 
     if (!this.props.loading && this.props.settings) {
-      // console.log(this.props.settings)
       attributes = this.props.settings.settings[this.props.match.params.uuid].attributes
       initialValues = { ...this.props.settings.settings[this.props.match.params.uuid].attributes }
     }

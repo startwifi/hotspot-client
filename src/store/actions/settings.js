@@ -9,6 +9,7 @@ export const updateCompanySettingsStart = () => {
 }
 
 export const updateCompanySettings = (token, id, attributes) => {
+  console.log(attributes)
   const requestData = {
     data: {
       type: 'settings',
@@ -75,7 +76,6 @@ export const fetchCompanySettings = (token, id) => {
       })
       .then(res => {
         const data = normalize(res.data)
-        console.log(data)
         dispatch(fetchCompanySettingsSuccess(data))
       })
       .catch(error => {
