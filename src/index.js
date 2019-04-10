@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
 import thunk from 'redux-thunk'
 import App from 'App'
 import adminReducer from 'store/reducers/admin'
 import authReducer from 'store/reducers/auth'
 import companyReducer from 'store/reducers/company'
 import placeReducer from 'store/reducers/place'
+import settingsReducer from 'store/reducers/settings'
 import registerServiceWorker from 'registerServiceWorker'
 
 import 'jquery/src/jquery'
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   company: companyReducer,
   place: placeReducer,
-  form: formReducer
+  settings: settingsReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))

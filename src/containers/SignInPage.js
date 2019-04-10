@@ -36,7 +36,7 @@ class SignInPage extends Component {
           <h3>Welcome to Hotspot+</h3>
           <p>Sign in. To see it in action.</p>
           {errorMessage}
-          <SignInForm onSubmit={this.handleSubmit} />
+          <SignInForm handleSubmit={this.handleSubmit} />
           <p className="m-t"><small>Made with &hearts; 2018</small></p>
         </div>
       </div>

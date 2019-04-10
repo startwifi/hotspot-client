@@ -14,6 +14,7 @@ import CompanyNewPage from 'containers/CompanyNewPage'
 import CompanyEditPage from 'containers/CompanyEditPage'
 import CompanyDetailsPage from 'containers/CompanyDetailsPage'
 import PlaceDetailsPage from 'containers/PlaceDetailsPage'
+import SettingsPage from 'containers/SettingsPage'
 import NotFound from 'components/NotFound'
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/companies/:uuid" component={CompanyDetailsPage} />
           <Route path="/companies" component={CompanyListPage} />
           <Route path="/places/:uuid" component={PlaceDetailsPage} />
+          <Route path="/settings/:uuid/edit" component={SettingsPage} />
           <Route path="/sign_out" component={SignOutPage} />
           <Route path="/" exact component={() => <h1>Dashboard</h1>} />
           <Route component={NotFound} />

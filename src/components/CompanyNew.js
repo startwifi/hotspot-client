@@ -30,6 +30,8 @@ class CompanyNew extends Component {
       formErrors = this.props.error
     }
 
+    console.log(formErrors)
+
     return (
       <div>
         <h1>New Company</h1>
@@ -44,7 +46,7 @@ class CompanyNew extends Component {
                 </div>
                 <div className="ibox-content">
                   <CompanyForm
-                    onSubmit={this.handleSubmit}
+                    handleSubmit={this.handleSubmit}
                     admins={this.props.admins}
                     errors={formErrors}
                   />

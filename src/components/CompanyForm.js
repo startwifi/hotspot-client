@@ -1,21 +1,8 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Form, Field } from 'react-final-form'
 import { Link } from 'react-router-dom'
 import Input from 'components/Input'
 import Select from 'components/Select'
-
-const validate = values => {
-  const errors = {}
-
-  if (!values.name || values.name.trim() === '') {
-    errors.name = 'Enter a company name'
-  }
-  if (!values.ownerId || values.ownerId.trim() === '') {
-    errors.ownerId = 'Choose a company owner'
-  }
-
-  return errors
-}
 
 const companyForm = props => {
   const { handleSubmit, pristine, submitting, admins, errors } = props
@@ -41,37 +28,51 @@ const companyForm = props => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-horizontal">
-      {renderError(errors)}
-      <Field component={Input} type="text" name="name" label="Name" />
-      <div className="hr-line-dashed" />
-      <Field
-        component={Select}
-        name="ownerId"
-        label="Owner"
-        defaultOption="Choose a company owner..."
-        options={ownerOptions}
-      />
-      <div className="hr-line-dashed" />
-      <div className="form-group">
-        <div className="col-md-8 col-md-offset-2">
-          <Link to="/companies" className="btn btn-white">
-            Cancel
-          </Link>&nbsp;
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={pristine || submitting}
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </form>
+    <Form
+      onSubmit={handleSubmit}
+      validate={values => {
+        const errors = {}
+
+        if (!values.name || values.name.trim() === '') {
+          errors.name = 'Enter a company name'
+        }
+        if (!values.ownerId || values.ownerId.trim() === '') {
+          errors.ownerId = 'Choose a company owner'
+        }
+
+        return errors
+      }}
+      className="form-horizontal"
+      render={({ handleSubmit, pristine, submitting }) => (
+        <form onSubmit={handleSubmit} className="m-t">
+          <Field component={Input} type="text" name="name" label="Name" />
+          <div className="hr-line-dashed" />
+          <Field
+            component={Select}
+            name="ownerId"
+            label="Owner"
+            defaultOption="Choose a company owner..."
+            options={ownerOptions}
+          />
+          <div className="hr-line-dashed" />
+          <div className="form-group">
+            <div className="col-md-8 col-md-offset-2">
+              <Link to="/companies" className="btn btn-white">
+                Cancel
+              </Link>&nbsp;
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={pristine || submitting}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      )}
+    />
   )
 }
 
-export default reduxForm({
-  form: 'companyForm',
-  validate
-})(companyForm)
+export default companyForm
